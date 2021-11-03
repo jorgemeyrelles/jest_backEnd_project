@@ -29,4 +29,17 @@ describe('String calculator', () => {
     const strOne = '1,2,';
     expect(() => stringFile.add(strOne)).toThrow('separador no fim');
   })
+  it('Recebe string com diferentes tipos de separador', () => {
+    const strOne = '//;\n1;3';
+    const strSnd = '//sep\n2sep5';
+    const strTrd = '//|\n1|2,3';
+    expect(stringFile.add(strOne)).toBe(4);
+    expect(stringFile.add(strSnd)).toBe(7);
+    expect(stringFile.add(strTrd)).toBe(6);
+  });
+  it('Recebe string com separadores e aceita numeros negativos', () => {
+    const strOne = '1,-3';
+    // stringFile.add(strOne);
+    expect(() => stringFile.add(strOne)).toThrow('numero negativo na string');
+  });
 });
