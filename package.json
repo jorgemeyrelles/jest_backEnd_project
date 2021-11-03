@@ -1,0 +1,16 @@
+{
+  "name": "TDD-kata2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint-config-trybe-frontend": "^1.2.1",
+    "jest": "^27.3.1"
+  }
+}
