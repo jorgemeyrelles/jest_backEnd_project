@@ -1,6 +1,6 @@
 const UserException = (value) => {
   if (value === 1) throw new 'separador no fim';
-  if (value === 2) throw new 'numero negativo na string';
+  if (value === 2) throw new `Negative number(s) not allowed`;
 };
 
 const add = (string) => {
@@ -14,8 +14,9 @@ const add = (string) => {
     if (Number(e) < 0) return UserException(2);
   });
   // esta expressão regular identifica "," e "\n"
-  return (string.split(/[^0-9]+/))
-    .filter((e) => e[0] !== undefined).reduce((a, b) => parseInt(a) + parseInt(b), 0);
+  const lessThen = string.match(/-?\d+/g).filter((e) =>  e < 1000);
+  // console.log(lessThen.reduce((a, b) => parseInt(a) + parseInt(b), 0));
+  return lessThen.reduce((a, b) => parseInt(a) + parseInt(b), 0);
 };
 
 module.exports = { add };

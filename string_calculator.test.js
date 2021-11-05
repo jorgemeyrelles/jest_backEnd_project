@@ -37,9 +37,19 @@ describe('String calculator', () => {
     expect(stringFile.add(strSnd)).toBe(7);
     expect(stringFile.add(strTrd)).toBe(6);
   });
-  it('Recebe string com separadores e aceita numeros negativos', () => {
+  it('Recebe string com separadores e não aceita numeros negativos', () => {
     const strOne = '1,-3';
     // stringFile.add(strOne);
-    expect(() => stringFile.add(strOne)).toThrow('numero negativo na string');
+    expect(() => stringFile.add(strOne)).toThrow(`Negative number(s) not allowed`);
+  });
+  it('Recebe string com separadores diferentes e numeros negativos', () => {
+    const strOne = '//|\n1|2,-3';
+    // stringFile.add(strOne);
+    expect(() => stringFile.add(strOne)).toThrow(`Negative number(s) not allowed`);
+  });
+  it('Ignora valores acima de 1000', () => {
+    const strOne = '1001, 2';
+    // stringFile.add(strOne);
+    expect(stringFile.add(strOne)).toBe(2);
   });
 });
